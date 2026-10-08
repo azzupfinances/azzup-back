@@ -1,0 +1,9 @@
+# PLACEHOLDER — not a working configuration.
+# Planned services (see docs/infrastructure/docker.md):
+#   app        PHP-FPM (docker/php/Dockerfile)
+#   nginx      HTTP server (docker/nginx/default.conf)
+#   postgres   PostgreSQL database
+#   queue      Background job worker
+#   scheduler  Scheduled task worker
+#   mailpit    Development email capture
+#   reverb     WebSocket server (optional)

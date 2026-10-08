@@ -1,0 +1,25 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Laravel (src/)
+/src/vendor/
+/src/node_modules/
+/src/public/hot
+/src/public/storage
+/src/storage/*.key
+/src/storage/pail
+/src/bootstrap/cache/*.php
+/src/.phpunit.result.cache
+/src/.phpunit.cache
+
+# Docker volumes
+/docker/data/
+
+# Editors and OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
