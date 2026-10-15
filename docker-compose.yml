@@ -1,8 +1,79 @@
-# PLACEHOLDER — not a working configuration.
-# Planned services (see docs/infrastructure/docker.md):
-#   app        PHP-FPM (docker/php/Dockerfile)
-#   nginx      HTTP server (docker/nginx/default.conf)
-#   postgres   PostgreSQL database
-#   queue      Background job worker
-#   scheduler  Scheduled task worker
-#   mailpit    Development email capture
+# Development stack. See docs/infrastructure/docker.md
+x-php: &php
+  build:
+    context: docker/php
+    args:
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+  image: azzup-php
+  env_file: .env
+  volumes:
+    - ./src:/var/www/html
+  restart: unless-stopped
+
+services:
+  app:
+    <<: *php
+    environment:
+      CONTAINER_ROLE: app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "test", "-f", "vendor/autoload.php"]
+      interval: 5s
+      retries: 60
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "${APP_PORT:-8000}:80"
+    volumes:
+      - ./src:/var/www/html:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_FORWARD_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 10
+    restart: unless-stopped
+
+  queue:
+    <<: *php
+    environment:
+      CONTAINER_ROLE: queue
+    command: ["php", "artisan", "queue:work", "--tries=3"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  scheduler:
+    <<: *php
+    environment:
+      CONTAINER_ROLE: scheduler
+    command: ["php", "artisan", "schedule:work"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports:
+      - "${MAILPIT_UI_PORT:-8025}:8025"
+    restart: unless-stopped
+
+volumes:
+  postgres-data:

@@ -6,7 +6,7 @@ Defines where each kind of file lives.
 ## Repository Root
 | Path | Responsibility |
 |---|---|
-| `src/` | Laravel application root (future installation target). |
+| `src/` | Laravel application root. |
 | `docker/` | Container definitions (`nginx/`, `php/`). |
 | `docs/` | Architectural standards. |
 | `bruno/` | Bruno HTTP request collections. |

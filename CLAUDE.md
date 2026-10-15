@@ -1,7 +1,7 @@
 # CLAUDE.md — Documentation Router
 
 **Azzup** — personal finance API for Brazilian CLT employees, built on a modular Laravel architecture.
-Laravel is not installed yet; the application root will be `src/`. Infrastructure files are placeholders. No business functionality is implemented.
+Laravel is installed in `src/` and runs in Docker (see `docs/infrastructure/docker.md`); run PHP, Artisan, and Composer through the `app` container. No business functionality is implemented.
 
 `docs/` is the authoritative source for architectural standards; `docs/business/` for business requirements. This file only routes to them.
 

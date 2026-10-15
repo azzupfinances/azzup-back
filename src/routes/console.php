@@ -1,5 +1,8 @@
 <?php
 
-// PLACEHOLDER — Laravel is not installed yet.
-// Console commands and scheduled tasks will be registered here.
-// See docs/infrastructure/scheduler.md
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+
+Artisan::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
