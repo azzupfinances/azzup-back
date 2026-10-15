@@ -1,0 +1,35 @@
+info:
+  name: Login
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/auth/login"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "cpf": "529.982.247-25",
+        "password": "secret123"
+      }
+  auth: none
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+
+        if (body.data && body.data.token) {
+          bru.setEnvVar('token', body.data.token);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
