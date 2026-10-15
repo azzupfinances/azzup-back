@@ -12,7 +12,7 @@ Read only the documents needed for the current task; use [CLAUDE.md](../CLAUDE.m
 - **authentication/** — [overview](authentication/overview.md)
 - **permissions/** — [overview](permissions/overview.md)
 - **database/** — [migrations](database/migrations.md), [soft deletes](database/soft-deletes.md), [conventions](database/conventions.md)
-- **infrastructure/** — [docker](infrastructure/docker.md), [nginx](infrastructure/nginx.md), [queues](infrastructure/queues.md), [scheduler](infrastructure/scheduler.md), [websocket](infrastructure/websocket.md), [monitoring](infrastructure/monitoring.md)
+- **infrastructure/** — [docker](infrastructure/docker.md), [nginx](infrastructure/nginx.md), [queues](infrastructure/queues.md), [scheduler](infrastructure/scheduler.md), [monitoring](infrastructure/monitoring.md)
 - **integrations/** — [overview](integrations/overview.md)
 - **testing/** — [feature tests](testing/feature-tests.md), [unit tests](testing/unit-tests.md), [bruno](testing/bruno.md)
 - **conventions/** — [naming](conventions/naming.md), [code style](conventions/code-style.md), [language](conventions/language.md), [new module checklist](conventions/new-module-checklist.md)

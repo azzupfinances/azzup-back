@@ -33,7 +33,6 @@ Laravel is not installed yet; the application root will be `src/`. Infrastructur
 | Nginx | `docs/infrastructure/nginx.md` |
 | Jobs and queues | `docs/infrastructure/queues.md` |
 | Scheduler | `docs/infrastructure/scheduler.md` |
-| WebSockets | `docs/infrastructure/websocket.md` |
 | Monitoring | `docs/infrastructure/monitoring.md` |
 | External integrations | `docs/integrations/overview.md` |
 | Feature tests | `docs/testing/feature-tests.md` |

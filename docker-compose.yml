@@ -6,4 +6,3 @@
 #   queue      Background job worker
 #   scheduler  Scheduled task worker
 #   mailpit    Development email capture
-#   reverb     WebSocket server (optional)

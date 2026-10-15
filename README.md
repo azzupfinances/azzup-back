@@ -18,5 +18,5 @@ Laravel is not installed. Infrastructure files are placeholders.
 
 ## Planned Stack
 
-Laravel, PHP, PostgreSQL, Docker Compose, Nginx, Sanctum, Reverb (optional), Telescope, Pulse, Pint, Queues, Scheduler, Mailpit.
+Laravel, PHP, PostgreSQL, Docker Compose, Nginx, Sanctum, Telescope, Pulse, Pint, Queues, Scheduler, Mailpit.
 See [docs/infrastructure/docker.md](docs/infrastructure/docker.md).

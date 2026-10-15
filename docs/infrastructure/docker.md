@@ -15,10 +15,9 @@ Placeholder only. `docker-compose.yml`, `docker/php/*`, and `deploy.sh` contain 
 | `queue` | Queue worker. |
 | `scheduler` | Scheduled task runner. |
 | `mailpit` | Development email capture. |
-| `reverb` | WebSocket server (optional). |
 
 ## Rules
-- `app`, `queue`, `scheduler`, and `reverb` share one PHP image.
+- `app`, `queue`, and `scheduler` share one PHP image.
 - Configuration comes from environment variables (`.env`, never committed).
 - `docker/php/uploads.ini` holds PHP upload limit overrides.
 - `docker/php/entrypoint.sh` holds container startup steps.
@@ -27,4 +26,3 @@ Placeholder only. `docker-compose.yml`, `docker/php/*`, and `deploy.sh` contain 
 - [Nginx](nginx.md)
 - [Queues](queues.md)
 - [Scheduler](scheduler.md)
-- [WebSocket](websocket.md)
