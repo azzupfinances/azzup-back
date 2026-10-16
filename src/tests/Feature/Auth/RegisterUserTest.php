@@ -19,6 +19,7 @@ class RegisterUserTest extends TestCase
             'name' => 'Maria Silva',
             'cpf' => '529.982.247-25',
             'email' => 'maria@example.com',
+            'phone' => '(11) 91234-5678',
             'password' => 'secret123',
             'password_confirmation' => 'secret123',
             'salary_payment_day' => 5,
@@ -31,6 +32,7 @@ class RegisterUserTest extends TestCase
 
         $response->assertCreated()
             ->assertJsonPath('data.user.cpf', '52998224725')
+            ->assertJsonPath('data.user.phone', '11912345678')
             ->assertJsonPath('data.user.salary_payment_day', 5)
             ->assertJsonMissingPath('data.user.password')
             ->assertJsonStructure(['data' => ['user', 'token'], 'message']);
@@ -46,7 +48,7 @@ class RegisterUserTest extends TestCase
     {
         $this->postJson('/api/auth/register', [])
             ->assertUnprocessable()
-            ->assertJsonValidationErrors(['name', 'cpf', 'email', 'password', 'salary_payment_day']);
+            ->assertJsonValidationErrors(['name', 'cpf', 'email', 'phone', 'password', 'salary_payment_day']);
     }
 
     public function test_rejects_an_invalid_cpf(): void
@@ -72,6 +74,23 @@ class RegisterUserTest extends TestCase
         $this->postJson('/api/auth/register', $this->payload(['email' => 'MARIA@example.com']))
             ->assertUnprocessable()
             ->assertJsonValidationErrors(['email']);
+    }
+
+    public function test_accepts_a_landline_phone(): void
+    {
+        $this->postJson('/api/auth/register', $this->payload(['phone' => '(11) 3123-4567']))
+            ->assertCreated()
+            ->assertJsonPath('data.user.phone', '1131234567');
+    }
+
+    public function test_rejects_an_invalid_phone(): void
+    {
+        // Missing area code, area code starting with 0, and an 11-digit number not starting with 9.
+        foreach (['91234-5678', '(01) 91234-5678', '(11) 81234-5678'] as $phone) {
+            $this->postJson('/api/auth/register', $this->payload(['phone' => $phone]))
+                ->assertUnprocessable()
+                ->assertJsonValidationErrors(['phone']);
+        }
     }
 
     public function test_rejects_a_short_password(): void
