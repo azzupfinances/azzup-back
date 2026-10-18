@@ -12,7 +12,8 @@ Reusable standard for filtering list endpoints.
 
 ## Conventions
 - Parameter names: snake_case, matching documented field names.
-- Exact parameter syntax is defined when the first list endpoint is implemented, then documented here.
+- One query parameter per filter, named after the field: `?month=2026-10`.
+- A period filter that bounds the result (e.g. `month`) may be required by the endpoint.
 
 ## Related Documentation
 - [Sorting](sorting.md)

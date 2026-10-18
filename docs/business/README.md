@@ -13,7 +13,9 @@ Confirmed requirements live in each feature document. Proposals and open questio
 | [Transactions](transactions.md) | Transactions, money representation, statement view. |
 | [Transaction Categories](transaction-categories.md) | Fixed category list. |
 | [Statement Imports](statement-imports.md) | OFX/CSV import workflow. |
-| [Bills](bills.md) | Bills, recurrence, status, listing. |
+| [Bills](bills.md) | Fixed monthly bills, status, listing. |
+| [Receivables](receivables.md) | Money owed to the user, in installments. |
+| [Credit Cards](credit-cards.md) | Credit cards, card purchases, installments, invoice payments. |
 | [Salary Cycles](salary-cycles.md) | Salary payment day and cycle. |
 | [Monthly Dashboard](monthly-dashboard.md) | Monthly summary metrics. |
 | [Annual Dashboard](annual-dashboard.md) | Annual summary metrics. |

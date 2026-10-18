@@ -1,0 +1,26 @@
+info:
+  name: Update personal data
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/profile"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Maria Souza",
+        "email": "maria.souza@example.com",
+        "phone": "(21) 3456-7890"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

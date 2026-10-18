@@ -20,6 +20,19 @@ Account registration, login, and roles.
 - Password must contain at least 8 characters and be securely hashed.
 - Every user must have a configured salary payment day.
 
+## Profile
+The authenticated user manages their own profile. Each block is saved independently.
+
+| Block | Fields | Rules |
+|---|---|---|
+| Personal data | Full name, email, phone | Same rules as registration; email stays unique. |
+| Salary | Gross salary, salary payment day | Gross salary is optional (not asked at registration), stored in [integer cents](transactions.md#money) and positive when set. |
+| Photo | One image per user | JPG, PNG, or WebP up to 5 MB. Private: served only to its owner. Can be replaced or removed. |
+| Password | Current password, new password | The current password is required. The new one follows the registration rule. Other sessions (tokens) are revoked; the current one stays. |
+
+- CPF cannot be changed.
+- Changing the email does not require confirmation yet: see [Pending Decisions](pending-decisions.md).
+
 ## Roles
 | Role key | Meaning |
 |---|---|

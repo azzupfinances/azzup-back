@@ -61,4 +61,34 @@ class LoginUserTest extends TestCase
         $this->postJson('/api/auth/login', ['cpf' => '52998224725', 'password' => 'wrong'])
             ->assertTooManyRequests();
     }
+
+    public function test_throttles_each_client_ip_reported_by_a_trusted_proxy(): void
+    {
+        // Test requests come from 127.0.0.1, standing in for the web front end's server.
+        config(['trustedproxy.proxies' => '127.0.0.1']);
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->postJson('/api/auth/login', ['cpf' => '52998224725', 'password' => 'wrong'], ['X-Forwarded-For' => '203.0.113.10'])
+                ->assertUnauthorized();
+        }
+
+        $this->postJson('/api/auth/login', ['cpf' => '52998224725', 'password' => 'wrong'], ['X-Forwarded-For' => '203.0.113.10'])
+            ->assertTooManyRequests();
+
+        $this->postJson('/api/auth/login', ['cpf' => '52998224725', 'password' => 'wrong'], ['X-Forwarded-For' => '203.0.113.20'])
+            ->assertUnauthorized();
+    }
+
+    public function test_ignores_the_forwarded_ip_from_an_untrusted_caller(): void
+    {
+        config(['trustedproxy.proxies' => null]);
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->postJson('/api/auth/login', ['cpf' => '52998224725', 'password' => 'wrong'], ['X-Forwarded-For' => "203.0.113.{$i}"])
+                ->assertUnauthorized();
+        }
+
+        $this->postJson('/api/auth/login', ['cpf' => '52998224725', 'password' => 'wrong'], ['X-Forwarded-For' => '203.0.113.99'])
+            ->assertTooManyRequests();
+    }
 }

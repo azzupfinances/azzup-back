@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Auth;
 
 use App\Rules\Cpf;
+use App\Rules\Phone;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
@@ -24,8 +25,7 @@ class RegisterUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'cpf' => ['required', 'string', new Cpf, 'unique:users,cpf'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            // Brazilian number with area code: 10 digits (landline) or 11 digits starting with 9 (mobile).
-            'phone' => ['required', 'string', 'regex:/^[1-9]{2}9?\d{8}$/'],
+            'phone' => ['required', 'string', new Phone],
             'password' => ['required', 'string', Password::min(8), 'confirmed'],
             'salary_payment_day' => ['required', 'integer', 'between:1,31'],
         ];
@@ -35,13 +35,6 @@ class RegisterUserRequest extends FormRequest
     {
         return [
             'cpf' => 'CPF',
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'phone.regex' => 'The :attribute must be a valid Brazilian phone number with area code.',
         ];
     }
 

@@ -19,9 +19,12 @@ Stable terminology used across Azzup.
 | Origin | How a transaction was created: `manual` or `imported`. |
 | Statement import | Creating transactions from an OFX or CSV bank statement after preview and confirmation. |
 | Preview | Unpersisted list of parsed transactions shown before import confirmation. |
-| Bill | A financial obligation with a due date. |
-| Recurrence type | Whether a bill is `monthly` or `one_time`. |
+| Bill | A fixed monthly obligation with a due day. |
+| Receivable | Money owed to the user, received in monthly installments. |
 | Bill status | `pending`, `overdue`, or `paid`. |
+| Credit card | A user's card with a limit and an invoice due day. |
+| Card purchase | A purchase on a credit card, paid in 1–24 installments through the invoice. |
+| Invoice | What a credit card charges in a month: the installments falling in it. |
 | Salary payment day | Day of the month on which the user receives their salary. |
 | Salary cycle | Interval between consecutive salary payment dates. |
 | Monthly balance | Monthly income minus monthly expenses. |

@@ -1,0 +1,27 @@
+info:
+  name: Create bill
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/bills"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Rent",
+        "category": "housing",
+        "amount_cents": 120000,
+        "due_day": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

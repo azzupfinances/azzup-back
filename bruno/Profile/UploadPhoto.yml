@@ -1,0 +1,24 @@
+info:
+  name: Upload photo
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{baseUrl}}/profile/photo"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: photo
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

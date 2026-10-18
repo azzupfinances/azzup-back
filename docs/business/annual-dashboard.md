@@ -17,3 +17,8 @@ Total annual expenses grouped by category.
 - Best financial month.
 - Worst financial month.
 - Months containing additional income (e.g. profit sharing, 13th salary). Identification rules are unresolved: see [Pending Decisions](pending-decisions.md).
+
+## API
+- `GET /transactions/annual-summary?year=YYYY` returns, from transactions only, the income and expenses (positive cents) of all twelve months and the expenses per category with any spending, highest first.
+- Card purchase installments are derived by clients ([Credit Cards](credit-cards.md)), so clients add them to these totals. Clients also decide which months are in progress or still to come.
+

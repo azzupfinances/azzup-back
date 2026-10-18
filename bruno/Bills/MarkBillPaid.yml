@@ -1,0 +1,18 @@
+info:
+  name: Mark bill paid
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/bills/1/paid-months/2026-10"
+  headers:
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

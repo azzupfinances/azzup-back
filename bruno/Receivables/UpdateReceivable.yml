@@ -1,0 +1,28 @@
+info:
+  name: Update receivable
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/receivables/1"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Loan",
+        "payer_name": "Pedro",
+        "total_cents": 120000,
+        "installments_count": 12,
+        "first_due_date": "2026-06-15"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

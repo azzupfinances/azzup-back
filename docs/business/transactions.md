@@ -9,6 +9,7 @@ Money entering or leaving a user's personal finances.
 - Transaction date.
 - Category ([Transaction Categories](transaction-categories.md)).
 - Origin.
+- Payment method (expenses only).
 - Owner ([Data Ownership](data-ownership.md)).
 
 ## Money
@@ -27,14 +28,29 @@ Determined by the amount sign:
 | `manual` | Created directly by the user. |
 | `imported` | Created through a [statement import](statement-imports.md). |
 
+## Payment Method
+Expenses record how they were paid; income has no payment method.
+
+| Payment method key | Meaning |
+|---|---|
+| `pix` | Pix transfer. |
+| `debit_card` | Debit card. |
+| `cash` | Cash. |
+| `boleto` | Brazilian bank slip (boleto). |
+
+Credit card purchases are not transactions: they belong to a credit card and are paid in installments.
+
 ## Operations
-Users can create, list, update, and delete their own transactions. Ownership is always enforced.
+- Users can create, list, update, and delete their own transactions. Ownership is always enforced.
+- Transactions created by the user have origin `manual`; the origin never changes on update.
+- Zero amounts are rejected while that decision is pending.
 
 ## Statement View
 - Transactions are displayed by calendar month.
 - Within a month, grouped by day, with a daily total.
 - Displayed in chronological order according to the selected presentation rules.
 - Filters: type (income or expense), category, description text.
+- The API returns the whole month at once (`GET /transactions?month=YYYY-MM`), newest first; the month totals, daily grouping, and filters are applied by the client over that list.
 
 ## Related Documentation
 - [Filtering](../api/filtering.md)

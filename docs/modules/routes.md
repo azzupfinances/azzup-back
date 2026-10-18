@@ -14,6 +14,7 @@ Organize API endpoints by module.
 - Route file names and URL paths: kebab-case.
 - Resource segments: plural nouns.
 - Route names: `{module}.{action}`.
+- A `{month}` segment is always `YYYY-MM`: the global pattern in `AppServiceProvider` answers 404 to anything else.
 
 ## Related Documentation
 - [Controllers](controllers.md)

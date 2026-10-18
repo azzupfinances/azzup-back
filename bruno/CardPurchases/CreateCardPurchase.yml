@@ -1,0 +1,29 @@
+info:
+  name: Create card purchase
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/card-purchases"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "credit_card_id": 1,
+        "description": "Flight",
+        "category": "leisure",
+        "total_cents": 128000,
+        "installments_count": 4,
+        "purchase_date": "2026-09-28"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -17,25 +17,18 @@ Single source of unconfirmed business rules. Nothing here may be implemented as 
 - **Open issues:** link between bill and transaction to prevent duplicate expenses; origin of the generated transaction.
 - **Affects:** [Bills](bills.md), [Transactions](transactions.md)
 
-### BR-003 — Automatic Monthly Bill Generation
-- **Status:** `pending_confirmation`
-- **Proposal:** paying a `monthly` bill creates its next monthly occurrence.
-- **Open issues:** due days 29–31 and shorter months; late payments; skipped months; amount changes; whether future occurrences appear before the current bill is paid.
-- **Affects:** [Bills](bills.md)
-
 ## Open Questions
 | Topic | Question | Affects |
 |---|---|---|
 | Salary payment day | How to handle days that do not exist in shorter months? | [Salary Cycles](salary-cycles.md) |
-| Month-end bills | How to handle monthly bills due near month-end? | [Bills](bills.md) |
 | Legitimate duplicates | How to keep identical but legitimate imported purchases? | [Statement Imports](statement-imports.md) |
 | CSV formats | How to handle bank-specific CSV variations? | [Statement Imports](statement-imports.md) |
 | Zero amounts | Are zero-value transactions valid? | [Transactions](transactions.md) |
-| Subscription provider | Which payment provider/gateway? | [Subscriptions](subscriptions.md) |
+| Email change | Should a new email be confirmed before it replaces the current one? | [Users](users.md) |
+| Annual Pix renewal | How far in advance is the user reminded, is there a grace period after expiry, and can they switch to card on renewal? | [Subscriptions](subscriptions.md) |
 | Subscription lifecycle | Cancellation, renewal, trial, and grace period policies? | [Subscriptions](subscriptions.md) |
 | Subscription restrictions | Which features depend on subscription status? | [Subscriptions](subscriptions.md) |
 | Extraordinary income | How to classify additional income (13th salary, profit sharing)? | [Annual Dashboard](annual-dashboard.md) |
 | Percentage comparisons | How to compare against zero or negative baselines? | [Monthly Dashboard](monthly-dashboard.md) |
 | Generated expense origin | Which origin do bill-generated expenses use, if BR-002 is approved? | [Transactions](transactions.md) |
-| Future recurring bills | Should future unpaid occurrences appear before the current bill is paid? | [Bills](bills.md) |
 | Timezone | Which timezone defines day, month, and due-date boundaries? | [Language — Dates and Times](../conventions/language.md#dates-and-times) |

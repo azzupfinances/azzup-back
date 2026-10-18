@@ -1,0 +1,27 @@
+info:
+  name: Create credit card
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/credit-cards"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Nubank",
+        "bank": "nubank",
+        "limit_cents": 800000,
+        "due_day": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

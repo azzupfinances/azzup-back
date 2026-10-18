@@ -54,6 +54,8 @@ Laravel is installed in `src/` and runs in Docker (see `docs/infrastructure/dock
 | Transaction categories | `docs/business/transaction-categories.md` |
 | Bank statement imports | `docs/business/statement-imports.md` |
 | Bills and payments | `docs/business/bills.md` |
+| Credit cards and card purchases | `docs/business/credit-cards.md` |
+| Receivables | `docs/business/receivables.md` |
 | Salary cycles | `docs/business/salary-cycles.md` |
 | Monthly dashboard | `docs/business/monthly-dashboard.md` |
 | Annual dashboard | `docs/business/annual-dashboard.md` |

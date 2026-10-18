@@ -1,0 +1,27 @@
+info:
+  name: Update credit card
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/credit-cards/1"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Nubank",
+        "bank": "nubank",
+        "limit_cents": 1000000,
+        "due_day": 15
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

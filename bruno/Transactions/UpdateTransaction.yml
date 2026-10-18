@@ -1,0 +1,27 @@
+info:
+  name: Update transaction
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/transactions/1"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Salary",
+        "amount_cents": 485000,
+        "transaction_date": "2026-10-05",
+        "category": "other"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,28 @@
+info:
+  name: Create transaction
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/transactions"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Groceries",
+        "amount_cents": -18432,
+        "transaction_date": "2026-10-07",
+        "category": "food",
+        "payment_method": "debit_card"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

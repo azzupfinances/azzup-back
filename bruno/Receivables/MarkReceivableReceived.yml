@@ -1,0 +1,18 @@
+info:
+  name: Mark receivable received
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/receivables/1/received-months/2026-10"
+  headers:
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -19,6 +19,9 @@ Summary of the authenticated user's finances for a selected calendar month.
 | Recent transactions | The user's most recent transactions. |
 | Upcoming bills | Pending and overdue bills ([Bills](bills.md)). |
 
+## Data Sources
+No dedicated endpoint: clients build the month from the monthly statement (`GET /transactions?month=`), card purchases, bills, and the salary payment day. Card installments falling in the month count as expenses, as in the statement. The previous month comparison is shown only when last month's balance is positive.
+
 ## Related Documentation
 - [Transactions](transactions.md)
 - [Pending Decisions](pending-decisions.md)

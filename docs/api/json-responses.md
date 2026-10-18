@@ -15,6 +15,8 @@ Single response format for all API output.
 ```json
 { "data": {}, "message": "Optional message." }
 ```
+- Calendar dates without time (e.g. `transaction_date`) are `YYYY-MM-DD` strings, in input and output.
+- Months are `YYYY-MM` strings.
 
 ## Related Documentation
 - [Exception Handling](exception-handling.md)

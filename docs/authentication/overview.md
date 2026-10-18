@@ -12,6 +12,9 @@ How API clients authenticate.
 - Protected routes apply `auth:sanctum` at the route group level.
 - Unauthenticated requests return 401 JSON responses.
 - Registration and login use the `auth` rate limiter (`AppServiceProvider`), keyed by CPF and IP.
+- The web front end calls the API from its own server, so the client IP comes from `X-Forwarded-For`.
+  Only that header is trusted, and only from `TRUSTED_PROXIES` (`config/trustedproxy.php`); set it to
+  the front end server's address alone. Any other caller's `X-Forwarded-For` is ignored.
 
 ## Endpoints
 | Method | Path | Auth |

@@ -1,0 +1,28 @@
+info:
+  name: Create receivable
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/receivables"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Loan",
+        "payer_name": "Pedro",
+        "total_cents": 100000,
+        "installments_count": 10,
+        "first_due_date": "2026-06-15"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
